@@ -7,19 +7,27 @@ function query(url, method = 'GET', data = []) {
         break;
 
         case 'POST':
-            query = fetch(url, {
+            query = fetch(url,{
                 method: 'POST',
-                body: JSON.stringify(data),
+                body:JSON.stringify(data),
                 headers: {
-                    'Content-Type' : 'application/json'
+                    'content-type ' : 'application/json'
                 }
-            });
+            })
         break;
     }
 
     return query.then(result => result.json());
 }
 
-const categories = query('https://638753ede399d2e473fbc7fa.mockapi.io/avi/v1/categories').then(json => {
-    console.log(json)
-})
+const categories = query('https://63731b72348e947299033009.mockapi.io/api/v1/category').then(json => {
+    let div_categories = document.querySelector('.categories');
+    json.forEach(element => {
+        let category = document.createElement('div');
+        category.classList.add('category');
+        category.innerHTML = `<a href="category.html?category=${element.id}">${element.name}</a>`;
+        div_categories.append(category);
+    });
+});
+    
+    

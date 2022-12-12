@@ -14,5 +14,5 @@ function showSlides() {
     dots[i].className = dots[i].className.replace(" active", "");
   }
   slides[slideIndex-1].style.display = "block";  
-  setTimeout(showSlides, 3000); 
+  setTimeout(showSlides, 6000); 
 }
