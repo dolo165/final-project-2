@@ -30,4 +30,11 @@ const categories = query('https://63731b72348e947299033009.mockapi.io/api/v1/cat
     });
 });
     
-    
+ //burger menu
+ 
+ let menuBtn = document.querySelector('.menu-btn');
+ let menu = document.querySelector('.menu');
+ menuBtn.addEventListener('click', function(){
+     menuBtn.classList.toggle('active');
+     menu.classList.toggle('active');
+ })

@@ -28,6 +28,7 @@ const categories = fetch(`https://63731b72348e947299033009.mockapi.io/api/v1/cat
                         <img src="${element.image}" alt="" width="400px">
                
                     <div class="item-price">price: <span id="price">${element.price}</span>$</div>
+                    <button>BUY</button>
                 </div>
                 
             `;
