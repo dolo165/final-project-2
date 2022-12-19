@@ -5,47 +5,77 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products</title>
+    <link rel="stylesheet" href="css/demo.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-              <div class="navbar">
+  <header class="header">
+    <div class="container">
+          <div class="navbar">
 
-                <div class="menu-btn">
-                  <span class="bar"></span>
-                  <span class="bar"></span>
-                  <span class="bar"></span>
-                </div>
-                <div class="menu">
-                  <nav>
-                     <ul>
-                    <li><a href="#">CONTACTS</a></li>
-                    <li><a href="#">FEEDBACK</a></li>
-
-                     </ul>
-                  </nav>
-                </div>
-
-              <div class="header__logo">
-                <a class="header__logo" href="/">
-                  <img src="images/logo.svg" alt="header__logo" width="100px">
-                </a>
-              </div>
-              <div class="header__assets">
-                <ul class="assets">
-                  <li><a href="loginForm.html" class="assets__link"><img src="images/acc.png" alt=""></a></li>
-                    <li><a href="cart.html" class="assets__link"><img src="images/korzina.png" alt=""></a></li>
-                </ul>
+            <!-- <div class="menu-btn">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
             </div>
-              </div>
-            </div>
-            <h1 style="color: white; font-weight: 900;font-size: 45px;">
-              WELCOME TO <span style="color: gold;"> <br> ARSENAL FC</span>  <br> OFFICIAL SHOP</h1>
-    </div>        
-    </header>
+            <div class="menu">
+              <nav>
+                 <ul>
+                <li><a href="#">CONTACTS</a></li>
+                <li><a href="#">FEEDBACK</a></li>
+
+                 </ul>
+              </nav>
+            </div> -->
+
+
+          <div class="header__logo">
+            <a class="header__logo" href="/">
+              <img src="images/logo.svg" alt="header__logo" width="100px">
+            </a>
+          </div> 
+            <a class = "haeder__menu" href="/">
+              HOME
+            </a>
+            <a class = "haeder__menu" href="feedback.html">
+              FEEDBACK
+            </a>
+            <!-- <a class = "haeder__menu" href="category.html">
+              PRODUCTS
+            </a> -->
+            <a class = "haeder__menu" href="about.html">
+              ABOUT
+            </a>
+          
+          <div class="header__assets">
+            <ul class="assets">
+              <li><a href="loginForm.html" class="assets__link"><img src="images/acc.png" alt=""></a></li>
+              <li><a href="cart.html" class="assets__link"><img src="images/korzina.png" alt=""></a></li>
+            </ul>
+        </div>
+          </div>
+        </div>
+        <h1 style="color: white; font-weight: 900;font-size: 45px;">
+          WELCOME TO <span style="color: gold;"> <br> ARSENAL FC</span>  <br> SHOP</h1>
+</div>        
+</header> 
+
+<div class="medium-4  columns">
+  <div class="cart">
+      <h1>Cart items</h1>
+      <div class="row">
+          <div class="medium-6 columns">
+              <button class="tiny secondary" id="clear">Clear the cart</button>
+          </div>
+          <div class="medium-6 columns">
+              <button class="tiny disabled" title="Work in progress">Checkout</button>
+          </div>
+      </div>
+      <div id="cartItems">Loading cart...</div>
+      Total price: <strong id="totalPrice">0 $</strong>
+  </div>
         <div class="products">
             
         </div>

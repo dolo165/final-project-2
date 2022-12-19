@@ -1,5 +1,5 @@
 *{
-    margin: 0 auto;
+  margin: 0 auto;
     font-family: Arial, Helvetica, sans-serif
 }
 html {
@@ -14,26 +14,32 @@ html {
 .header{
   background-color: #8b0d0d;
     align-items: center; 
-    height: 400px;
+    height: 350px;
       width: 100%;
       margin: 0 auto;
 }
 
-
+.haeder__menu{
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+  margin: 10px;
+  line-height: 5.5;
+  font-size: 18px;
+}
 .navbar{
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   margin: 0 auto;
 }
 
 
-*{
-  margin: 0;
-}
+
 .container{
   margin: 0 auto;
 }
-.menu-btn {
+/* .menu-btn {
 	width: 30px;
 	height: 40px;
 	position: relative;
@@ -96,9 +102,9 @@ html {
 .menu-btn.active span:nth-of-type(3) {
   top: 50%;
   transform: translate(-50%, 0%) rotate(-45deg); 
-}
+} */
 .header__assets{
-  margin-top: 13px;
+  margin-top: 40px;
   display: flex;
 }
 
@@ -192,11 +198,11 @@ p{
     padding-top: 100px;
   }
   .footer__text a{
-    text-align: left;
+    text-align: center;
     text-decoration: none;
     text-overflow: inherit;
     color: #555;
-    margin: 5px;
+    margin: 15px;
   }
 .footer__text a{
     transition: .1s;
@@ -206,6 +212,7 @@ p{
   
 .social__icon{
   text-align: center;
+  
 }
   .fa {
     display: flex;
@@ -249,15 +256,15 @@ p{
   .categories{
     display: flex;
     justify-content: center;
-    flex-direction: column;
     row-gap: 40px;
-    width: 50%;
-    margin: 0 auto;
+    width: 100%;
+    margin-top: 40px;
+
 }
 
 .category a{
-    height: 600px;
-    background-image: url(https://i1.adis.ws/i/ArsenalDirect/mh35904_f5?$810x810$&.jpg);
+    height: 300px;
+    background-color: #8b0d0d;
     display: flex;
     justify-content: center;
     transition: all 0.3s ease-in-out;
@@ -266,7 +273,9 @@ p{
     font-size: 28px;
     text-transform: uppercase;
     transition: all 0.3s ease-in-out;
-
+    margin: 0 auto;
+    width: 300px;
+  text-align: center;
 }
 
 
@@ -277,10 +286,7 @@ p{
 .products{  
   display: flex;
   justify-content: center;
-  flex-direction: column; 
-  margin-top: 20px;
-  margin-bottom: 20px;
-
+  padding-top: 140px;   
 }
 
 .item-image{
@@ -291,18 +297,17 @@ p{
   font-size: 25px;
    font-weight: 700;
 
-  color: #3d434d;
+  color: #8b0d0d;
   text-align: center;
 }
 button{
   width: 200px;
   height: 60px;
-  background-color: gold;
+  background-color: #001c31;
   color: #fff;
   box-shadow: #fff;
   border: #fff;
   border-radius: 20px;
-  padding-top: ;
 }
 
 .item-price{
@@ -333,3 +338,101 @@ button{
     
   }
 }
+
+
+.contact__button{
+  font-size: 25px;
+  color: #fff;
+  display: inline-block;
+  width: 350px;
+  height: 100px;
+  text-align: center;
+  line-height: 4.5;
+  border-radius: 10px;
+  background-color: #43B3E0;;
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding-bottom: 40px;
+}
+#section__contact{
+  width: 100%;
+  height: 600px;
+  background-color: #fff;
+  margin: 100px 0 auto;
+}
+.header__inner{
+  padding-top: 50px;
+}
+input[type=name], input[type=email] {
+  padding: 15px 60px;
+  height: 40px;
+  width: 300px;
+  border: none;
+  border-radius: 10px;
+  background: #8b0d0d;
+  margin: 10px auto;
+  font-size: 20px;
+  color: #fff;
+  -moz-transition: background .2s ease-in-out, box-shadow .2s ease-in-out;
+-webkit-transition: background .2s ease-in-out, box-shadow .2s ease-in-out;
+-ms-transition: background .2s ease-in-out, box-shadow .2s ease-in-out;
+transition: background .2s ease-in-out, box-shadow .2s ease-in-out;
+
+}
+input[type=name]:focus, input[type=email]:focus {
+  background-color: #fff;
+  outline: none;
+  font-size: 20px;
+  color: #303030;
+}
+.up__name, .up__email{
+  
+  width: 100%;
+  display: flex;
+  font-size: 20px;
+}
+input[type=message] {
+  padding: 5px 60px;
+  height: 240px;
+  width: 500px;
+  border: none;
+  border-radius: 10px;
+  background: #8b0d0d;
+  margin: 10px auto;
+  font-size: 20px;
+  color: #282828;
+  text-align: left;
+  display: flex;
+  -moz-transition: background .2s ease-in-out, box-shadow .2s ease-in-out;
+-webkit-transition: background .2s ease-in-out, box-shadow .2s ease-in-out;
+-ms-transition: background .2s ease-in-out, box-shadow .2s ease-in-out;
+transition: background .2s ease-in-out, box-shadow .2s ease-in-out;
+}
+input[type=message]:focus {
+  background-color: #fff;
+  outline: none;
+  font-size: 20px;
+  color: #001c31;
+  text-align: left;
+}
+.send__button{
+  font-size: 25px;
+  color: #fff;
+  display: inline-block;
+  width: 250px;
+  height: 70px;
+  text-align: center;
+  line-height: 4.5;
+  border-radius: 10px;
+  background-color: #001c31;
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding-bottom: 40px;
+}
+.send{
+  display: flex;
+  justify-content: center;
+}
+
