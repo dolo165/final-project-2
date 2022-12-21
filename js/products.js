@@ -21,12 +21,15 @@ const categories = fetch(`https://63731b72348e947299033009.mockapi.io/api/v1/cat
             item.classList.add('item');
             item.innerHTML = `
                 <div>
-                    <div class="item-title">${element.title}</div>
-                    <div class="item-image">
-                        <img src="${element.image}" alt="" width="400px">
-               
-                    <div class="item-price">price: <span id="price">${element.price}</span>$</div>
-                    <button >ADD TO CART</button>
+                <div class="item-title">${element.title}</div>
+                <div class="item-image">
+                    <img src="${element.image}" alt="" width="300px">
+           
+                <div class="item-price">price: <span id="price">${element.price}</span>$</div>
+                <button class="btn-ens-self btn-ens-style" 
+                data-name="your product" data-price="50$,70$" 
+
+                data-img="https://assets.website-files.com/61ed56ae9da9fd7e0ef0a967/61f12e3a57bdb3717fbf9cec_Product_Default.svg">ADD TO CART</button>
                 </div>    
             `;
         div_products.append(item);
