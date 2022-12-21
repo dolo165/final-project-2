@@ -1,228 +1,101 @@
-var cartId = "cart";
-
-var localAdapter = {
-
-    saveCart: function (object) {
-
-        var stringified = JSON.stringify(object);
-        localStorage.setItem(cartId, stringified);
-        return true;
-
-    },
-    getCart: function () {
-
-        return JSON.parse(localStorage.getItem(cartId));
-
-    },
-    clearCart: function () {
-
-        localStorage.removeItem(cartId);
-
-    }
-
-};
-
-var ajaxAdapter = {
-
-    saveCart: function (object) {
-
-        var stringified = JSON.stringify(object);
-        // do an ajax request here
-
-    },
-    getCart: function () {
-
-        // do an ajax request -- recognize user by cookie / ip / session
-        return JSON.parse(data);
-
-    },
-    clearCart: function () {
-
-        //do an ajax request here
-
-    }
-
-};
-
-var storage = localAdapter;
-
-var helpers = {
-
-    getHtml: function (id) {
-
-        return document.getElementById(id).innerHTML;
-
-    },
-    setHtml: function (id, html) {
-
-        document.getElementById(id).innerHTML = html;
-        return true;
-
-    },
-    itemData: function (object) {
-
-        var count = object.querySelector(".count"),
-            patt = new RegExp("^[1-9]([0-9]+)?$");
-        count.value = (patt.test(count.value) === true) ? parseInt(count.value) : 1;
-
-        var item = {
-
-            name: object.getAttribute('data-name'),
-            price: object.getAttribute('data-price'),
-            id: object.getAttribute('data-id'),
-            count: count.value,
-            total: parseInt(object.getAttribute('data-price')) * parseInt(count.value)
-
-        };
-        return item;
-
-    },
-    updateView: function () {
-
-        var items = cart.getItems(),
-            template = this.getHtml('cartT'),
-            compiled = _.template(template, {
-                items: items
-            });
-        this.setHtml('cartItems', compiled);
-        this.updateTotal();
-
-    },
-    emptyView: function () {
-
-        this.setHtml('cartItems', '<p>Nothing to see here</p>');
-        this.updateTotal();
-
-    },
-    updateTotal: function () {
-
-        this.setHtml('totalPrice', cart.total + '$');
-
-    }
-
-};
-
-var cart = {
-
-    count: 0,
-    total: 0,
-    items: [],
-    getItems: function () {
-
-        return this.items;
-
-    },
-    setItems: function (items) {
-
-        this.items = items;
-        for (var i = 0; i < this.items.length; i++) {
-            var _item = this.items[i];
-            this.total += _item.total;
-        }
-
-    },
-    clearItems: function () {
-
-        this.items = [];
-        this.total = 0;
-        storage.clearCart();
-        helpers.emptyView();
-
-    },
-    addItem: function (item) {
-
-        if (this.containsItem(item.id) === false) {
-
-            this.items.push({
-                id: item.id,
-                name: item.name,
-                price: item.price,
-                count: item.count,
-                total: item.price * item.count
-            });
-
-            storage.saveCart(this.items);
-
-
-        } else {
-
-            this.updateItem(item);
-
-        }
-        this.total += item.price * item.count;
-        this.count += item.count;
-        helpers.updateView();
-
-    },
-    containsItem: function (id) {
-
-        if (this.items === undefined) {
-            return false;
-        }
-
-        for (var i = 0; i < this.items.length; i++) {
-
-            var _item = this.items[i];
-
-            if (id == _item.id) {
-                return true;
-            }
-
-        }
-        return false;
-
-    },
-    updateItem: function (object) {
-
-        for (var i = 0; i < this.items.length; i++) {
-
-            var _item = this.items[i];
-
-            if (object.id === _item.id) {
-
-                _item.count = parseInt(object.count) + parseInt(_item.count);
-                _item.total = parseInt(object.total) + parseInt(_item.total);
-                this.items[i] = _item;
-                storage.saveCart(this.items);
-
-            }
-
-        }
-
-    }
-
-};
-
-document.addEventListener('DOMContentLoaded', function () {
-
-    if (storage.getCart()) {
-
-        cart.setItems(storage.getCart());
-        helpers.updateView();
-
-    } else {
-
-        helpers.emptyView();
-
-    }
-    var products = document.querySelectorAll('.product button');
-    [].forEach.call(products, function (product) {
-
-        product.addEventListener('click', function (e) {
-
-            var item = helpers.itemData(this.parentNode);
-            cart.addItem(item);
-
-
-        });
-
-    });
-
-    document.querySelector('#clear').addEventListener('click', function (e) {
-
-        cart.clearItems();
-
-    });
-
-
+let basket = (localStorage.getItem('basket'))? JSON.parse(localStorage.getItem('basket')): [];
+
+basket.forEach(element => {
+  if (element) {
+    let div = document.createElement('div');
+    div.classList.add('tour');
+    div.classList.add('flex');
+    div.dataset.id = element.id;
+    div.innerHTML = `
+    <div class="tour-image"><img src="${element.image}" alt=""></div>
+        <div class="tour-info pl-4 pt-4 flex flex-col">
+            <div class="remove-icon"><img src=""></div>
+            <div class="tour-title">${element.title}</div>
+            <div class="tour-bottom text-center">
+                <div class="tour-price"><span>${element.price}</span>$</div>
+                <div class="tour-count">
+                    <div class="custom-number-input h-10 w-32">
+                        <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
+                          <button data-action="decrement" class=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
+                            <span class="m-auto text-2xl font-thin">−</span>
+                          </button>
+                          <input type="number" class="outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none" name="custom-input-number" value="${element.count}"></input>
+                        <button data-action="increment" class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
+                          <span class="m-auto text-2xl font-thin">+</span>
+                        </button>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    document.querySelector('.tours').append(div);
+  }
 });
+
+
+console.log(basket);
+
+function decrement(e) {
+  const btn = e.target.parentNode.parentElement.querySelector(
+    'button[data-action="decrement"]'
+  );
+  const target = btn.nextElementSibling;
+  let value = Number(target.value);
+  value--;
+  value = (value < 0)? 0: value;
+  target.value = value;
+}
+
+function increment(e) {
+  const btn = e.target.parentNode.parentElement.querySelector(
+    'button[data-action="decrement"]'
+  );
+  const target = btn.nextElementSibling;
+  let value = Number(target.value);
+  value++;
+  target.value = value;
+}
+
+const decrementButtons = document.querySelectorAll(
+  `button[data-action="decrement"]`
+);
+
+const incrementButtons = document.querySelectorAll(
+  `button[data-action="increment"]`
+);
+
+decrementButtons.forEach(btn => {
+  btn.addEventListener("click", decrement);
+});
+
+incrementButtons.forEach(btn => {
+  btn.addEventListener("click", increment);
+});
+
+let delete_card = document.querySelectorAll('.remove-icon img');
+
+function calc_sum() {
+  let sum = 0;
+  let length = 0;
+  basket.forEach(element => {
+    if (element) {
+      sum += element.price * element.count;
+      length++;
+    }
+  })
+  
+  document.querySelector('.h1 span').innerHTML = '(' + length + ')';
+  document.querySelector('.price').innerHTML = sum;
+}
+
+delete_card.forEach(element => {
+  element.addEventListener('click', function () {
+    let parent = this.closest('.tour');
+    console.log(parent.dataset.id);
+    basket[parent.dataset.id] = null;
+    localStorage.setItem('basket', JSON.stringify(basket));
+    parent.parentNode.removeChild(parent);
+    calc_sum();
+  });
+})

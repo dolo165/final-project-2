@@ -1,8 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 @import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-*{ margin: 0; }
+*{ margin: 0; padding: 0;}
 body{
-  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: 300;
 -webkit-font-smoothing: antialiased;
@@ -110,7 +108,7 @@ article p{
     line-height: 1.5;
 }
  
-@media only screen and (min-width: 1166px){
+@media only screen and (min-width: 1160px){
     main{
       max-width: 960px;
       margin-left: auto;

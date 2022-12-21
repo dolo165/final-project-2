@@ -8,17 +8,8 @@ let strGET = window.location.search.replace('?', '')
         },
         {}
     );
-
-
 console.log(strGET)
 
-
-function getItemInfo() {
-    let name = document.querySelector(".item-title")
-    let price = document.querySelector("#price")
-    console.log(name.innerHTML)
-    console.log(price.innerHTML)
-}
 
 const categories = fetch(`https://63731b72348e947299033009.mockapi.io/api/v1/category/${strGET.category}/products`)
     .then(responce => responce.json())
@@ -35,12 +26,9 @@ const categories = fetch(`https://63731b72348e947299033009.mockapi.io/api/v1/cat
                         <img src="${element.image}" alt="" width="400px">
                
                     <div class="item-price">price: <span id="price">${element.price}</span>$</div>
-                    <button onclick=(getItemInfo())>BUY</button>
-                </div>
-                
+                    <button >ADD TO CART</button>
+                </div>    
             `;
-
         div_products.append(item);
     });
-
 });
